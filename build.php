@@ -4,7 +4,36 @@
 shell_exec('cd ..');
 
 if (file_exists("gsb-build")) {
-  echo "gsb-build directory exists"; 
+  echo "gsb-build directory exists\n";
 }
 
-echo "done";
+if (file_exists("gsb-public")) {
+  echo "gsb-public directory exists\n";
+} else {
+  echo "cloning gsb-public\n";
+  shell_exec('git clone https://github.com/gsbitse/gsb-public.git');
+}
+
+if (file_exists("gsb-distro")) {
+  echo "gsb-distro directory exists\n";
+} else {
+  echo "cloning gsb-distro\n";
+  shell_exec('git clone https://github.com/gsbitse/gsb-distro.git');
+}
+
+if (file_exists("revamp")) {
+  echo "revamp directory exists\n";
+} else {
+  echo "cloning revamp\n";
+  shell_exec('git clone revamp@svn-634.devcloud.hosting.acquia.com:revamp.git');
+}
+
+if (file_exists("drush")) {
+  echo "drush directory exists\n";
+} else {
+  echo "cloning drush\n";
+  shell_exec('git clone http://git.drupal.org/project/drush.git');
+}
+
+echo "done\n";
+
