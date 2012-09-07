@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+echo "start of build.php\n";
+
 shell_exec('cd ..');
 
 if (file_exists("gsb-build")) {
@@ -35,6 +37,7 @@ if (file_exists("drush")) {
   shell_exec('git clone http://git.drupal.org/project/drush.git');
 }
 
+/*
 shell_exec('pwd');
 
 shell_exec('cd revamp');
@@ -50,6 +53,7 @@ shell_exec('git add .');
 shell_exec('git commit -am "build from cloudbees"');
 
 shell_exec('git push');
+*/
 
-echo "done\n";
+echo "end of build.php\n";
 
