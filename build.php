@@ -37,6 +37,8 @@ if (file_exists("drush")) {
 
 shell_exec('cd revamp');
 
+shell_exec('pwd');
+
 shell_exec('rm -r docroot');
 
 shell_exec('php ../drush/drush.php make ../gsb-distro/gsb-public-distro.make docroot');
