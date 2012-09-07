@@ -35,6 +35,8 @@ if (file_exists("drush")) {
   shell_exec('git clone http://git.drupal.org/project/drush.git');
 }
 
+shell_exec('pwd');
+
 shell_exec('cd revamp');
 
 shell_exec('pwd');
