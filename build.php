@@ -35,5 +35,17 @@ if (file_exists("drush")) {
   shell_exec('git clone http://git.drupal.org/project/drush.git');
 }
 
+shell_exec('cd revamp');
+
+shell_exec('rm -r docroot');
+
+shell_exec('php ../drush/drush.php make ../gsb-distro/gsb-public-distro.make docroot');
+
+shell_exec('git add .');
+
+shell_exec('git commit -am "build from cloudbees"');
+
+shell_exec('git push');
+
 echo "done\n";
 
