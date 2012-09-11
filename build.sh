@@ -1,6 +1,13 @@
 #!/bin/sh
 
+############################################
+# save the workspace root directory
+
 workspace_dir=$PWD
+
+############################################
+# check if the gsb-distro directory exists
+# if it doesn't clone it
 
 cd $workspace_dir
 
@@ -17,6 +24,10 @@ else
     echo "gsb-distro directory exists"
 fi
 
+############################################
+# check if the revamp directory exists
+# if it doesn't clone it
+
 cd $workspace_dir
 
 if [ ! -d revamp ]; then
@@ -32,6 +43,10 @@ else
     echo "revamp directory exists"
 fi
 
+############################################
+# check if the gsb-distro branch exists
+# if not checkout the branch
+
 cd ${workspace_dir}/gsb-distro
 git show-branch $branch
 if [[ $? != 0 ]]; then
@@ -42,7 +57,13 @@ if [[ $? != 0 ]]; then
         exit -1
     fi    
     echo "gsb-distro checkout branch = $branch" 
+else
+    git checkout $branch
 fi
+
+############################################
+# check if the revamp branch exists
+# if not checkout the branch
 
 cd ${workspace_dir}/revamp
 git show-branch $server
@@ -54,8 +75,27 @@ if [[ $? != 0 ]]; then
         exit -1
     fi
     echo "revamp checkout branch = $server"
+else
+    git checkout $server
 fi
 
-cd $workspace_dir
+############################################
+# change to the revamp directory
+# and then run the drush make
 
+cd ${workspace_dir}/revamp
+
+rm -rf docroot
+php library/drush/drush.php make ../gsb-distro/gsb-public-distro.make docroot
+
+############################################
+# add the changes up to acquia
+
+git add .
+git commit -am "build from cloudbees - project: revamp  branch: $branch server: $server"
+git push origin $server
+
+############################################
+# end of build script 
+#
 
