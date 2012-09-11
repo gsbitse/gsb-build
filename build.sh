@@ -36,7 +36,6 @@ cd ${workspace_dir}/gsb-distro
 git show-branch $branch
 if [[ $? != 0 ]]; then
     git checkout $branch
-    cd gsb-distro
     git show-branch $branch
     if [[ $? != 0 ]]; then
         echo "failed to checkout gsb-distro branch = $branch"
@@ -49,7 +48,6 @@ cd ${workspace_dir}/revamp
 git show-branch $server
 if [[ $? != 0 ]]; then
     git checkout $server
-    cd revamp
     git show-branch $server
     if [[ $? != 0 ]]; then
         echo "failed to checkout revamp branch = $server"
