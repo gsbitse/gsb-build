@@ -4,7 +4,7 @@ workspace_dir=$PWD
 
 cd $workspace_dir
 
-if [[ ! -e gsb_distro ]]; then
+if [ ! -d gsb-distro ]; then
     git clone -b $branch https://github.com/gsbitse/gsb-distro.git
     cd gsb-distro
     git show-branch $branch
@@ -19,7 +19,7 @@ fi
 
 cd $workspace_dir
 
-if [[ ! -e revamp ]]; then
+if [ ! -d revamp ]; then
     git clone -b $server revamp@svn-634.devcloud.hosting.acquia.com:revamp.git
     cd revamp
     git show-branch $server
