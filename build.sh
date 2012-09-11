@@ -89,6 +89,12 @@ rm -rf docroot
 php library/drush/drush.php make ../gsb-distro/gsb-public-distro.make docroot
 
 ############################################
+# add back in the symlink for the files
+# directory
+
+# ln -s docroot/sites/default/files /mnt/?????
+
+############################################
 # add the changes up to acquia
 
 git add .
