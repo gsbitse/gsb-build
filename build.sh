@@ -1,15 +1,23 @@
 #!/bin/sh
 
-if [[ ! -e gsb-build ]]; then
-    echo "directory gsb-build does not exist\n"
-    exit -1
-fi
-
 if [[ ! -e gsb_distro ]]; then
-    git clone https://github.com/gsbitse/gsb-distro.git
+    git clone -b $branch https://github.com/gsbitse/gsb-distro.git
     echo "gsb-distro directory created\n"
-else
-    echo "gsb-distro directory exists\n"
 fi
 
+if [[ ! -e revamp ]]; then
+    git clone -b $branch revamp@svn-634.devcloud.hosting.acquia.com:revamp.git
+    echo "revamp directory created\n"
+fi
+
+cd gsb-distro
+git show-branch $branch
+if [[ $? != 0 ]]; then
+    git clone -b $branch https://github.com/gsbitse/gsb-distro.git
+    echo "gsb-distro branch = $branch was cloned" 
+fi
+
+cd ..
+
+cd revamp 
 
