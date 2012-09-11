@@ -1,6 +1,8 @@
 #!/bin/sh
 
-cd /
+workspace_dir=$PWD
+
+cd $workspace_dir
 
 if [[ ! -e gsb_distro ]]; then
     git clone -b $branch https://github.com/gsbitse/gsb-distro.git
@@ -15,7 +17,7 @@ else
     echo "gsb-distro directory exists"
 fi
 
-cd /
+cd $workspace_dir
 
 if [[ ! -e revamp ]]; then
     git clone -b $server revamp@svn-634.devcloud.hosting.acquia.com:revamp.git
@@ -30,7 +32,7 @@ else
     echo "revamp directory exists"
 fi
 
-cd /gsb-distro
+cd ${workspace_dir}/gsb-distro
 git show-branch $branch
 if [[ $? != 0 ]]; then
     cd ..
@@ -44,7 +46,7 @@ if [[ $? != 0 ]]; then
     echo "gsb-distro branch = $branch was cloned" 
 fi
 
-cd /revamp
+cd ${workspace_dir}/revamp
 git show-branch $server
 if [[ $? != 0 ]]; then
     cd ..
@@ -58,6 +60,6 @@ if [[ $? != 0 ]]; then
     echo "revamp branch = $server was cloned"
 fi
 
-cd /
+cd $workspace_dir
 
 
