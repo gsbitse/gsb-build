@@ -8,7 +8,7 @@ fi
 if [[ ! -e gsb_distro ]]; then
     git clone https://github.com/gsbitse/gsb-distro.git
     echo "gsb-distro directory created\n"
-elif then
+else
     echo "gsb-distro directory exists\n"
 fi
 
