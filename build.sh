@@ -12,6 +12,11 @@ else
     echo "gsb-distro directory exists"
 fi
 
+echo "outa here"
+exit -1
+
+echo "what"
+
 if [[ ! -e revamp ]]; then
     git clone -b $server revamp@svn-634.devcloud.hosting.acquia.com:revamp.git
     git show-branch $server
