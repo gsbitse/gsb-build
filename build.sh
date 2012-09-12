@@ -40,6 +40,7 @@ if [[ ret_code == 0 ]]; then
     git checkout $server
     echo "gsb-distro checkout branch = $branch"
 else
+    echo "ret_code = $ret_code"
     echo "gsb-distro branch = $branch not found"
     exit -1
 fi
