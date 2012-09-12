@@ -95,6 +95,7 @@ php library/drush/drush.php make ../gsb-distro/gsb-public-distro.make docroot
 ############################################
 # add the changes up to acquia
 
+git pull
 git add .
 git commit -am "build from cloudbees - project: revamp  branch: $branch server: $server"
 git push origin $server
