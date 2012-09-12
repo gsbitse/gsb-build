@@ -1,6 +1,12 @@
 #!/bin/sh
 
 ############################################
+# initialize the distro and revamp urls
+
+distro_url="https://github.com/gsbitse/gsb-distro.git"
+revamp_url="revamp@svn-634.devcloud.hosting.acquia.com:revamp.git"
+
+############################################
 # save the workspace root directory
 
 workspace_dir=$PWD
@@ -12,16 +18,30 @@ workspace_dir=$PWD
 cd $workspace_dir
 
 if [ ! -d gsb-distro ]; then
-    git clone -b $branch https://github.com/gsbitse/gsb-distro.git
-    cd gsb-distro
-    git show-branch $branch
-    if [[ $? != 0 ]]; then
-        echo "failed to clone gsb-distro branch = $branch"
-        exit -1
+    git clone -b $branch $distro_url
+    if [ ! -d gsb-distro ]; then
+       echo "gsb-distro cloned failed for branch = $branch"
+       exit -1
     fi
     echo "gsb-distro directory created"
 else 
     echo "gsb-distro directory exists"
+fi
+
+############################################
+# check if the gsb-distro branch exists
+# if it does then check it out
+
+cd ${workspace_dir}/gsb-distro
+
+ret_code=$(git ls-remote $distro_url $branch | wc -l)
+
+if [[ ret_code == 0 ]]; then
+    git checkout $server
+    echo "gsb-distro checkout branch = $branch"
+else
+    echo "gsb-distro branch = $branch not found"
+    exit -1
 fi
 
 ############################################
@@ -31,12 +51,10 @@ fi
 cd $workspace_dir
 
 if [ ! -d revamp ]; then
-    git clone -b $server revamp@svn-634.devcloud.hosting.acquia.com:revamp.git
-    cd revamp
-    git show-branch $server
-    if [[ $? != 0 ]]; then
-        echo "failed to clone revamp branch = $server"
-        exit -1
+    git clone -b $server $revamp_url 
+    if [ ! -d revamp ]; then
+       echo "revamp cloned failed for branch = $server"
+       exit -1
     fi    
     echo "revamp directory created"
 else
@@ -44,39 +62,19 @@ else
 fi
 
 ############################################
-# check if the gsb-distro branch exists
-# if not checkout the branch
-
-cd ${workspace_dir}/gsb-distro
-git show-branch $branch
-if [[ $? != 0 ]]; then
-    git checkout $branch
-    git show-branch $branch
-    if [[ $? != 0 ]]; then
-        echo "failed to checkout gsb-distro branch = $branch"
-        exit -1
-    fi    
-    echo "gsb-distro checkout branch = $branch" 
-else
-    git checkout $branch
-fi
-
-############################################
 # check if the revamp branch exists
-# if not checkout the branch
+# if it does then check it out
 
 cd ${workspace_dir}/revamp
-git show-branch $server
-if [[ $? != 0 ]]; then
+
+ret_code=$(git ls-remote $revamp_url $server | wc -l)
+
+if [[ ret_code == 0 ]]; then
     git checkout $server
-    git show-branch $server
-    if [[ $? != 0 ]]; then
-        echo "failed to checkout revamp branch = $server"
-        exit -1
-    fi
     echo "revamp checkout branch = $server"
 else
-    git checkout $server
+    echo "revamp branch = $server not found"
+    exit -1
 fi
 
 ############################################
