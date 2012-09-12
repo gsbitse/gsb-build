@@ -34,13 +34,12 @@ fi
 
 cd ${workspace_dir}/gsb-distro
 
-ret_code=$(git ls-remote $distro_url $branch | wc -l)
+ret_code=$(git ls-remote $distro_url $branch | wc -l | tr -d ' ')
 
-if [[ ret_code == 0 ]]; then
+if [[ $ret_code == 1 ]]; then
     git checkout $server
     echo "gsb-distro checkout branch = $branch"
 else
-    echo "ret_code = $ret_code"
     echo "gsb-distro branch = $branch not found"
     exit -1
 fi
@@ -68,9 +67,9 @@ fi
 
 cd ${workspace_dir}/revamp
 
-ret_code=$(git ls-remote $revamp_url $server | wc -l)
+ret_code=$(git ls-remote $revamp_url $server | wc -l | tr -d ' ')
 
-if [[ ret_code == 0 ]]; then
+if [[ $ret_code == 1 ]]; then
     git checkout $server
     echo "revamp checkout branch = $server"
 else
