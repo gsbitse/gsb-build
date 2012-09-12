@@ -27,3 +27,11 @@ if [ ! -d gsb-distro ]; then
 else 
     echo "gsb-distro directory exists"
 fi
+
+############################################
+# check if the gsb-distro branch exists
+# if it does then check it out
+
+cd ${workspace_dir}/gsb-distro
+
+ret_code=$(git ls-remote $distro_url $branch | wc -l | tr -d ' ')
