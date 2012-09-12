@@ -28,6 +28,8 @@ else
     echo "gsb-distro directory exists"
 fi
 
+: << --COMMENTS BLOCK--
+
 ############################################
 # check if the gsb-distro branch exists
 # if it does then check it out
@@ -104,4 +106,6 @@ git push origin $server
 ############################################
 # end of build script 
 #
+
+--COMMENTS BLOCK--
 
