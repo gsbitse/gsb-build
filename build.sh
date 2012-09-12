@@ -35,3 +35,12 @@ fi
 cd ${workspace_dir}/gsb-distro
 
 ret_code=$(git ls-remote $distro_url $branch | wc -l | tr -d ' ')
+
+if [[ $ret_code == 1 ]]; then
+    git checkout $server
+    echo "gsb-distro checkout branch = $branch"
+else
+    echo "gsb-distro branch = $branch not found"
+    exit -1
+fi
+
