@@ -34,7 +34,9 @@ fi
 
 cd ${workspace_dir}/gsb-distro
 
+echo "before 1"
 ret_code=$(git ls-remote $distro_url $branch | wc -l | tr -d ' ')
+echo "after 1"
 
 if [[ $ret_code == 1 ]]; then
     git checkout $server
