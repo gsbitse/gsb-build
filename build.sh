@@ -92,7 +92,7 @@ php library/drush/drush.php make ../gsb-distro/gsb-public-distro.make docroot
 # add back in the symlink for the files
 # directory
 
-ln -s /mnt/files/revamp/sites/default/files docroot/sites/default/files 
+#ln -s /mnt/files/revamp/sites/default/files docroot/sites/default/files 
 
 ############################################
 # add the changes up to acquia
