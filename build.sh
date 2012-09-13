@@ -12,6 +12,26 @@ revamp_url="revamp@svn-634.devcloud.hosting.acquia.com:revamp.git"
 workspace_dir=$PWD
 
 ############################################
+# check if the gsb-distro branch exists
+# if not exit with an error
+
+ret_code=$(git ls-remote $distro_url $branch | wc -l | tr -d ' ')
+if [[ $ret_code != 1 ]]; then
+    echo "gsb-distro branch = $branch not found"
+    exit -1
+fi
+
+############################################
+# check if the revamp branch exists
+# if not exit with an error
+
+ret_code=$(git ls-remote $revamp_url $server | wc -l | tr -d ' ')
+if [[ $ret_code != 1 ]]; then
+    echo "revamp branch = $server not found"
+    exit -1
+fi
+
+############################################
 # check if the gsb-distro directory exists
 # if it doesn't clone it
 
@@ -29,20 +49,11 @@ else
 fi
 
 ############################################
-# check if the gsb-distro branch exists
-# if it does then check it out
+# checkout the gsb-distro branch
+# 
 
 cd ${workspace_dir}/gsb-distro
-
-ret_code=$(git ls-remote $distro_url $branch | wc -l | tr -d ' ')
-
-if [[ $ret_code == 1 ]]; then
-    git checkout $branch
-    echo "gsb-distro checkout branch = $branch"
-else
-    echo "gsb-distro branch = $branch not found"
-    exit -1
-fi
+git checkout $branch
 
 ############################################
 # check if the revamp directory exists
@@ -62,20 +73,11 @@ else
 fi
 
 ############################################
-# check if the revamp branch exists
-# if it does then check it out
+# checkout the revamp branch
+# 
 
 cd ${workspace_dir}/revamp
-
-ret_code=$(git ls-remote $revamp_url $server | wc -l | tr -d ' ')
-
-if [[ $ret_code == 1 ]]; then
-    git checkout $server
-    echo "revamp checkout branch = $server"
-else
-    echo "revamp branch = $server not found"
-    exit -1
-fi
+git checkout $server
 
 ############################################
 # change to the revamp directory
