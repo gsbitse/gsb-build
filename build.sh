@@ -80,6 +80,17 @@ cd ${workspace_dir}/revamp
 git checkout $server
 
 ############################################
+# copy the settings.php file
+
+mkdir ${workspace_dir}/temp
+
+cd ${workspace_dir}/revamp
+git pull
+
+cp docroot/sites/default/settings.php ${workspace_dir}/temp/.
+
+
+############################################
 # change to the revamp directory
 # and then run the drush make
 
@@ -97,7 +108,10 @@ php library/drush/drush.php make ../gsb-distro/gsb-public-distro.make docroot
 ############################################
 # add the changes up to acquia
 
-git pull
+cd ${workspace_dir}/revamp
+
+cp ${workspace_dir}/temp/settings.php docroot/sites/default/.
+
 git add .
 git commit -am "build from cloudbees - project: revamp  branch: $branch server: $server"
 git push origin $server
