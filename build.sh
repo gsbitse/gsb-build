@@ -5,6 +5,7 @@
 
 distro_url="https://github.com/gsbitse/gsb-distro.git"
 revamp_url="revamp@svn-634.devcloud.hosting.acquia.com:revamp.git"
+revamp_ssh="revamp@srv-1353.devcloud.hosting.acquia.com"
 
 ############################################
 # save the workspace root directory
@@ -121,6 +122,18 @@ cd ${workspace_dir}/revamp
 git add .
 git commit -am "build from cloudbees - project: revamp  branch: $branch server: $server"
 git push origin $server
+
+############################################
+# run update.php on the site
+#
+
+ssh $revamp_ssh
+
+if [ $server == "dev" ]; then
+  cd /mnt/www/html/revampdev/docroot
+fi
+
+drush update
 
 ############################################
 # end of build script 
