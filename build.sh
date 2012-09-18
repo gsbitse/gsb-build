@@ -133,7 +133,7 @@ if [ $server == "dev" ]; then
   cd /mnt/www/html/revampdev/docroot
 fi
 
-drush update
+drush updatedb
 
 ############################################
 # end of build script 
