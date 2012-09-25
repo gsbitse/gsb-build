@@ -127,13 +127,7 @@ git push origin $server
 # run update.php on the site
 #
 
-ssh $revamp_ssh
-
-if [ $server == "dev" ]; then
-  cd /mnt/www/html/revampdev/docroot
-fi
-
-drush updatedb
+ssh $revamp_ssh "sh build/build.sh $server"
 
 ############################################
 # end of build script 
