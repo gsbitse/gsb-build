@@ -99,7 +99,7 @@ cp docroot/sites/default/settings.php ${workspace_dir}/temp/.
 cd ${workspace_dir}/revamp
 
 rm -rf docroot
-php library/drush/drush.php make ../gsb-distro/gsb-public-distro.make docroot
+php library/drush/drush.php make ../gsb-distro/gsb-panopoly-distro.make docroot
 
 ############################################
 # add back in the symlink for the files
