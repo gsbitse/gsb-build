@@ -100,7 +100,12 @@ cd ${workspace_dir}/revamp
 
 rm -rf docroot
 git rm $(git ls-files --deleted)
+
+echo "start drush make"
+
 php library/drush/drush.php make ../gsb-distro/gsb-panopoly-distro.make docroot
+
+echo "end drush make"
 
 ############################################
 # add back in the symlink for the files
