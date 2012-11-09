@@ -99,6 +99,7 @@ cp docroot/sites/default/settings.php ${workspace_dir}/temp/.
 cd ${workspace_dir}/revamp
 
 rm -rf docroot
+git rm $(git ls-files --deleted)
 php library/drush/drush.php make ../gsb-distro/gsb-panopoly-distro.make docroot
 
 ############################################
