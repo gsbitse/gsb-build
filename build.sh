@@ -99,7 +99,6 @@ cp docroot/sites/default/settings.php ${workspace_dir}/temp/.
 cd ${workspace_dir}/revamp
 
 rm -rf docroot
-git rm $(git ls-files --deleted)
 
 echo "start drush make"
 
@@ -125,6 +124,11 @@ cp ${workspace_dir}/temp/settings.php docroot/sites/default/.
 echo "end - settings copy"
 
 ############################################
+# 
+
+git rm $(git ls-files --deleted)
+
+############################################
 # add the changes up to acquia
 
 echo "begin - revamp add/commit/push"
@@ -132,7 +136,6 @@ echo "begin - revamp add/commit/push"
 cd ${workspace_dir}/revamp
 
 git add .
-git add -f docroot/sites/default/settings.php
 git commit -am "build from cloudbees - project: revamp  branch: $branch server: $server"
 git push origin $server
 
