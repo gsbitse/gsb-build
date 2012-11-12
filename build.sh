@@ -16,20 +16,28 @@ workspace_dir=$PWD
 # check if the gsb-distro branch exists
 # if not exit with an error
 
+cd ${workspace_dir}/gsb-distro
+
 ret_code=$(git ls-remote $distro_url $branch | wc -l | tr -d ' ')
 if [[ $ret_code != 1 ]]; then
     echo "gsb-distro branch = $branch not found"
     exit -1
+else
+    git pull 
 fi
 
 ############################################
 # check if the revamp branch exists
 # if not exit with an error
 
+cd ${workspace_dir}/revamp
+
 ret_code=$(git ls-remote $revamp_url $server | wc -l | tr -d ' ')
 if [[ $ret_code != 1 ]]; then
     echo "revamp branch = $server not found"
     exit -1
+else
+    git pull 
 fi
 
 ############################################
