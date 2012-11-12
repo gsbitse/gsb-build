@@ -91,9 +91,9 @@ git pull
 
 cp docroot/sites/default/settings.php ${workspace_dir}/temp/.
 
-
 ############################################
 # change to the revamp directory
+# remove the previous files from the docroot
 # and then run the drush make
 
 cd ${workspace_dir}/revamp
@@ -124,7 +124,9 @@ cp ${workspace_dir}/temp/settings.php docroot/sites/default/.
 echo "end - settings copy"
 
 ############################################
-# 
+# remove all the previous files that are
+# no longer needed 
+# (the files not recreated by the make)
 
 git rm $(git ls-files --deleted)
 
@@ -139,14 +141,15 @@ git add .
 git commit -am "build from cloudbees - project: revamp  branch: $branch server: $server"
 git push origin $server
 
-
 echo "end - revamp add/commit/push"
 
 ############################################
+# just experimenting with this right now
+# not used at the moment
 # run update.php on the site
 #
 
-ssh $revamp_ssh "sh build/build.sh $server"
+# ssh $revamp_ssh "sh build/build.sh $server"
 
 ############################################
 # end of build script 
