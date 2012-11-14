@@ -92,12 +92,12 @@ git checkout $server
 # copy the settings.php file off to 
 # a temp directory
 
-mkdir ${workspace_dir}/temp
+# mkdir ${workspace_dir}/temp
 
 cd ${workspace_dir}/revamp
 git pull
 
-cp docroot/sites/default/settings.php ${workspace_dir}/temp/.
+# cp docroot/sites/default/settings.php ${workspace_dir}/temp/.
 
 ############################################
 # change to the revamp directory
@@ -110,7 +110,8 @@ rm -rf docroot
 
 echo "start drush make"
 
-php library/drush/drush.php make ../gsb-distro/gsb-panopoly-distro.make docroot
+# php library/drush/drush.php make ../gsb-distro/gsb-panopoly-distro.make docroot
+php /private/drush/drush.php make ../gsb-distro/gsb-panopoly-distro.make docroot
 
 echo "end drush make"
 
@@ -127,7 +128,8 @@ echo "end drush make"
 echo "begin - settings copy"
 
 cd ${workspace_dir}/revamp
-cp ${workspace_dir}/temp/settings.php docroot/sites/default/.
+# cp ${workspace_dir}/temp/settings.php docroot/sites/default/.
+cp /private/stanfordgsb/settings.php docroot/sites/default/.
 
 echo "end - settings copy"
 
