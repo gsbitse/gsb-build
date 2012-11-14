@@ -127,9 +127,9 @@ echo "end drush make"
 
 echo "begin - settings copy"
 
-cd ${workspace_dir}/revamp
+# cd ${workspace_dir}/revamp
 # cp ${workspace_dir}/temp/settings.php docroot/sites/default/.
-cp /private/stanfordgsb/settings.php docroot/sites/default/.
+cp /private/stanfordgsb/settings.php ${workspace_dir}/revamp/docroot/sites/default/.
 
 echo "end - settings copy"
 
