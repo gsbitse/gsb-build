@@ -148,7 +148,7 @@ echo "begin - revamp add/commit/push"
 cd ${workspace_dir}/revamp
 
 git add .
-git add docroot/sites/default/settings.php
+git add -f docroot/sites/default/settings.php
 git commit -am "build from cloudbees - project: revamp  branch: $branch server: $server"
 git push origin $server
 
