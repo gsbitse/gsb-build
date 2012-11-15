@@ -155,9 +155,8 @@ git push origin $server
 echo "end - revamp add/commit/push"
 
 ############################################
-# just experimenting with this right now
-# not used at the moment
-# run update.php on the site
+# run drush si on acquia site if 
+# $rebuild is set to true
 #
 
 ssh $revamp_ssh "sh build/build.sh $server $rebuild"
