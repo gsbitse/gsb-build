@@ -160,7 +160,7 @@ echo "end - revamp add/commit/push"
 # run update.php on the site
 #
 
-ssh $revamp_ssh "sh build/build.sh $server"
+ssh $revamp_ssh "sh build/build.sh $server $rebuild"
 
 ############################################
 # end of build script 
