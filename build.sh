@@ -110,8 +110,8 @@ rm -rf docroot
 
 echo "start drush make"
 
-# php library/drush/drush.php make ../gsb-distro/gsb-panopoly-distro.make docroot
-php /private/stanfordgsb/drush/drush.php make ../gsb-distro/gsb-panopoly-distro.make docroot
+# php library/drush/drush.php make ../gsb-distro/gsb-public-distro.make docroot
+php /private/stanfordgsb/drush/drush.php make ../gsb-distro/gsb-public-distro.make docroot
 
 echo "end drush make"
 
