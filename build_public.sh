@@ -130,7 +130,7 @@ echo "begin - settings copy"
 # cd ${workspace_dir}/gsbpublic
 # cp ${workspace_dir}/temp/settings.php docroot/sites/default/.
 
-cp /private/gsbpublic/stanfordgsb/settings.php ${workspace_dir}/gsbpublic/docroot/sites/default/.
+cp /private/stanfordgsb/settings_gsbpublic.php ${workspace_dir}/gsbpublic/docroot/sites/default/settings.php
 
 echo "end - settings copy"
 
