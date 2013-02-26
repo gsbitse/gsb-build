@@ -5,12 +5,28 @@
 
 distro_url="https://github.com/gsbitse/gsb-distro.git"
 publicsite_url="gsbpublic@svn-3224.prod.hosting.acquia.com:gsbpublic.git"
-publicsite_ssh="gsbpublic@staging-1530.prod.hosting.acquia.com"
+publicsite_dev_ssh="gsbpublic@staging-1530.prod.hosting.acquia.com"
+publicsite_test_ssh="gsbpublic@ded-2036.prod.hosting.acquia.com"
 
 ############################################
 # save the workspace root directory
 
 workspace_dir=$PWD
+
+############################################
+# set the public site ssh we will be using
+# based on which server we are building on
+
+if test $server = "dev"
+then
+  publicsite_ssh=$publicsite_dev_ssh
+fi
+
+if test $server = "stage"
+then
+  publicsite_ssh=$publicsite_test_ssh
+fi
+
 
 ############################################
 # check if the gsb-distro branch exists
@@ -160,7 +176,7 @@ echo "end - gsbpublic add/commit/push"
 # $rebuild is set to true
 #
 
-ssh $publicsite_ssh "sh build/build.sh $server $rebuild"
+ssh ${publicsite_ssh} "sh build/build.sh $server $rebuild"
 
 ############################################
 # end of build script 
