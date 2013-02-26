@@ -1,11 +1,11 @@
 #!/bin/sh
 
 ############################################
-# initialize the distro and revamp urls
+# initialize the distro and gsbpublic urls
 
 distro_url="https://github.com/gsbitse/gsb-distro.git"
-revamp_url="revamp@svn-634.devcloud.hosting.acquia.com:revamp.git"
-revamp_ssh="revamp@srv-1353.devcloud.hosting.acquia.com"
+publicsite_url="gsbpublic@svn-3224.prod.hosting.acquia.com:gsbpublic.git"
+publicsite_ssh="gsbpublic@staging-1530.prod.hosting.acquia.com"
 
 ############################################
 # save the workspace root directory
@@ -27,14 +27,14 @@ else
 fi
 
 ############################################
-# check if the revamp branch exists
+# check if the gsbpublic branch exists
 # if not exit with an error
 
-cd ${workspace_dir}/revamp
+cd ${workspace_dir}/gsbpublic
 
-ret_code=$(git ls-remote $revamp_url $server | wc -l | tr -d ' ')
+ret_code=$(git ls-remote $publicsite_url $server | wc -l | tr -d ' ')
 if [[ $ret_code != 1 ]]; then
-    echo "revamp branch = $server not found"
+    echo "gsbpublic branch = $server not found"
     exit -1
 else
     git pull 
@@ -65,27 +65,27 @@ cd ${workspace_dir}/gsb-distro
 git checkout $branch
 
 ############################################
-# check if the revamp directory exists
+# check if the gsbpublic directory exists
 # if it doesn't clone it
 
 cd $workspace_dir
 
-if [ ! -d revamp ]; then
-    git clone -b $server $revamp_url 
-    if [ ! -d revamp ]; then
-       echo "revamp cloned failed for branch = $server"
+if [ ! -d gsbpublic ]; then
+    git clone -b $server $publicsite_url 
+    if [ ! -d gsbpublic ]; then
+       echo "gsbpublic cloned failed for branch = $server"
        exit -1
     fi    
-    echo "revamp directory created"
+    echo "gsbpublic directory created"
 else
-    echo "revamp directory exists"
+    echo "gsbpublic directory exists"
 fi
 
 ############################################
-# checkout the revamp branch
+# checkout the gsbpublic branch
 # 
 
-cd ${workspace_dir}/revamp
+cd ${workspace_dir}/gsbpublic
 git checkout $server
 
 ############################################
@@ -94,17 +94,17 @@ git checkout $server
 
 # mkdir ${workspace_dir}/temp
 
-cd ${workspace_dir}/revamp
+cd ${workspace_dir}/gsbpublic
 git pull
 
 # cp docroot/sites/default/settings.php ${workspace_dir}/temp/.
 
 ############################################
-# change to the revamp directory
+# change to the gsbpublic directory
 # remove the previous files from the docroot
 # and then run the drush make
 
-cd ${workspace_dir}/revamp
+cd ${workspace_dir}/gsbpublic
 
 rm -rf docroot
 
@@ -119,17 +119,17 @@ echo "end drush make"
 # add back in the symlink for the files
 # directory
 
-#ln -s /mnt/files/revamp/sites/default/files docroot/sites/default/files 
+#ln -s /mnt/files/gsbpublic/sites/default/files docroot/sites/default/files 
 
 ############################################
 # copy the settings.php file back to 
-# the revamp directory 
+# the gsbpublic directory 
 
 echo "begin - settings copy"
 
-# cd ${workspace_dir}/revamp
+# cd ${workspace_dir}/gsbpublic
 # cp ${workspace_dir}/temp/settings.php docroot/sites/default/.
-cp /private/stanfordgsb/settings.php ${workspace_dir}/revamp/docroot/sites/default/.
+cp /private/stanfordgsb/settings.php ${workspace_dir}/gsbpublic/docroot/sites/default/.
 
 echo "end - settings copy"
 
@@ -143,23 +143,23 @@ git rm $(git ls-files --deleted)
 ############################################
 # add the changes up to acquia
 
-echo "begin - revamp add/commit/push"
+echo "begin - gsbpublic add/commit/push"
 
-cd ${workspace_dir}/revamp
+cd ${workspace_dir}/gsbpublic
 
 git add .
 git add -f docroot/sites/default/settings.php
-git commit -am "build from cloudbees - project: revamp  branch: $branch server: $server"
+git commit -am "build from cloudbees - project: gsbpublic  branch: $branch server: $server"
 git push origin $server
 
-echo "end - revamp add/commit/push"
+echo "end - gsbpublic add/commit/push"
 
 ############################################
 # run drush si on acquia site if 
 # $rebuild is set to true
 #
 
-ssh $revamp_ssh "sh build/build.sh $server $rebuild"
+ssh $publicsite_ssh "sh build/build_public.sh $server $rebuild"
 
 ############################################
 # end of build script 
