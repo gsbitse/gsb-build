@@ -159,7 +159,7 @@ echo "end - gsbpublic add/commit/push"
 # $rebuild is set to true
 #
 
-ssh $publicsite_ssh "sh build/build_public.sh $server $rebuild"
+ssh $publicsite_ssh "sh build/build.sh $server $rebuild"
 
 ############################################
 # end of build script 
