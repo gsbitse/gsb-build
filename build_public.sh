@@ -5,9 +5,13 @@
 
 distro_url="https://github.com/gsbitse/gsb-distro.git"
 publicsite_url="gsbpublic@svn-3224.prod.hosting.acquia.com:gsbpublic.git"
+
 publicsite_dev_ssh="gsbpublic@staging-1530.prod.hosting.acquia.com"
 publicsite_dev2_ssh="gsbpublic@staging-1530.prod.hosting.acquia.com"
-publicsite_test_ssh="gsbpublic@ded-2036.prod.hosting.acquia.com"
+publicsite_stage_ssh="gsbpublic@ded-2036.prod.hosting.acquia.com"
+publicsite_stage2_ssh="gsbpublic@ded-2036.prod.hosting.acquia.com"
+publicsite_sandbox_ssh="gsbpublic@staging-1530.prod.hosting.acquia.com"
+publicsite_loadtest_ssh="gsbpublic@ded-1505.prod.hosting.acquia.com"
 
 ############################################
 # save the workspace root directory
@@ -30,9 +34,23 @@ fi
 
 if test $server = "stage"
 then
-  publicsite_ssh=$publicsite_test_ssh
+  publicsite_ssh=$publicsite_stage_ssh
 fi
 
+if test $server = "stage2"
+then
+  publicsite_ssh=$publicsite_stage2_ssh
+fi
+
+if test $server = "sandbox"
+then
+  publicsite_ssh=$publicsite_sandbox_ssh
+fi
+
+if test $server = "loadtest"
+then
+  publicsite_ssh=$publicsite_loadtest_ssh
+fi
 
 ############################################
 # check if the gsb-distro branch exists
