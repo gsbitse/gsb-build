@@ -6,6 +6,7 @@
 distro_url="https://github.com/gsbitse/gsb-distro.git"
 publicsite_url="gsbpublic@svn-3224.prod.hosting.acquia.com:gsbpublic.git"
 publicsite_dev_ssh="gsbpublic@staging-1530.prod.hosting.acquia.com"
+publicsite_dev2_ssh="gsbpublic@staging-1530.prod.hosting.acquia.com"
 publicsite_test_ssh="gsbpublic@ded-2036.prod.hosting.acquia.com"
 
 ############################################
@@ -20,6 +21,11 @@ workspace_dir=$PWD
 if test $server = "dev"
 then
   publicsite_ssh=$publicsite_dev_ssh
+fi
+
+if test $server = "dev2"
+then
+  publicsite_ssh=$publicsite_dev2_ssh
 fi
 
 if test $server = "stage"
