@@ -12,6 +12,7 @@ publicsite_stage_ssh="gsbpublic@ded-2036.prod.hosting.acquia.com"
 publicsite_stage2_ssh="gsbpublic@ded-2036.prod.hosting.acquia.com"
 publicsite_sandbox_ssh="gsbpublic@staging-1530.prod.hosting.acquia.com"
 publicsite_loadtest_ssh="gsbpublic@ded-1505.prod.hosting.acquia.com"
+publicsite_prod_ssh="gsbpublic@ded-1528.prod.hosting.acquia.com"
 
 ############################################
 # save the workspace root directory
@@ -50,6 +51,11 @@ fi
 if test $server = "loadtest"
 then
   publicsite_ssh=$publicsite_loadtest_ssh
+fi
+
+if test $server = "prod"
+then
+  publicsite_ssh=$publicsite_prod_ssh
 fi
 
 ############################################
