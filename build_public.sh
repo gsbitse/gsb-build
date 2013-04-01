@@ -156,7 +156,7 @@ rm -rf docroot
 
 echo "start drush make"
 
-# php library/drush/drush.php make ../gsb-distro/gsb-public-distro.make docroot
+php /private/stanfordgsb/settimezone.php
 php /private/stanfordgsb/drush/drush.php make ../gsb-distro/gsb-public-distro.make docroot
 
 echo "end drush make"
@@ -173,9 +173,6 @@ echo "end drush make"
 
 echo "begin - settings copy"
 
-# cd ${workspace_dir}/gsbpublic
-# cp ${workspace_dir}/temp/settings.php docroot/sites/default/.
-
 cp /private/stanfordgsb/settings_gsbpublic.php ${workspace_dir}/gsbpublic/docroot/sites/default/settings.php
 
 echo "end - settings copy"
@@ -188,6 +185,17 @@ echo "end - settings copy"
 git rm $(git ls-files --deleted)
 
 ############################################
+# updating symlink for simplesaml
+
+echo "begin - updating symlink for simplesaml"
+
+cd ${workspace_dir}/gsbpublic/docroot
+
+ln -s ../library/simplesamlphp/www simplesaml
+
+echo "end - updating symlink for simplesaml"
+
+############################################
 # add the changes up to acquia
 
 echo "begin - gsbpublic add/commit/push"
@@ -196,7 +204,7 @@ cd ${workspace_dir}/gsbpublic
 
 git add .
 git add -f docroot/sites/default/settings.php
-git commit -am "build from cloudbees - project: gsbpublic  branch: $branch server: $server"
+git commit -am "build from cloudbees - project: gsbpublic  branch: $branch server: $server rebuild: $rebuild"
 git push origin $server
 
 echo "end - gsbpublic add/commit/push"
