@@ -1,1 +1,1 @@
-branches=acquia_apachesolr,fullcalendar,gsb_events,gsb_feature_club,gsb_feature_event,gsb_feature_page,gsb_feature_person,gsb_feature_research_paper_ct,gsb_feature_staff,master,new-approach,panels_ipe_overrides,slideshow_fpp,sprint8,theme-calendar-integration,wp-263,wp-391,wp-393,wp-400,wp-641,wp-676,wp-677,wp-714,wp-715,wp-792
+branches=
