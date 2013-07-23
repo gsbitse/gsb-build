@@ -178,6 +178,17 @@ cp /private/stanfordgsb/settings_gsbpublic.php ${workspace_dir}/gsbpublic/docroo
 echo "end - settings copy"
 
 ############################################
+# create a gsb -> default symlink to 
+# create a separate path for files
+
+echo "begin - gsb symlink"
+
+cd ${workspace_dir}/gsbpublic/docroot/sites
+ln -s default gsb
+
+echo "end - gsb symlink"
+
+############################################
 # remove all the previous files that are
 # no longer needed 
 # (the files not recreated by the make)
