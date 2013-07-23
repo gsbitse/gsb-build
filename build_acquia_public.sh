@@ -162,6 +162,15 @@ php /private/stanfordgsb/drush/drush.php make ../gsb-distro/gsb-public-distro.ma
 echo "end drush make"
 
 ############################################
+# make sure the directory exists before
+# continuing.
+
+if [ ! -d docroot ]; then
+    echo "The make failed"
+    exit -1
+fi
+
+############################################
 # add back in the symlink for the files
 # directory
 
