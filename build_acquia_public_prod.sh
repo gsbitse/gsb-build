@@ -8,6 +8,8 @@ publicsite_url="gsbpublic@svn-3224.prod.hosting.acquia.com:gsbpublic.git"
 
 publicsite_prod_ssh="gsbpublic@ded-1528.prod.hosting.acquia.com"
 
+server="prod"
+
 ############################################
 # save the workspace root directory
 
@@ -173,7 +175,7 @@ cd ${workspace_dir}/gsbpublic
 # commented out for testing
 # git add .
 # git add -f docroot/sites/default/settings.php
-# git commit -am "build from cloudbees - project: gsbpublic  tag: $tag server: $server rebuild: $rebuild"
+# git commit -am "build from cloudbees - project: gsbpublic  tag: $tag server: $server"
 # git push origin $server
 
 echo "end - gsbpublic add/commit/push"
@@ -184,7 +186,7 @@ echo "end - gsbpublic add/commit/push"
 #
 
 # commented out for testing
-# ssh ${publicsite_ssh} "sh build/bin/acquia-build/build.sh $server $rebuild"
+# ssh ${publicsite_ssh} "sh build/bin/acquia-build/build_prod.sh $server"
 
 ############################################
 # end of build script 
