@@ -23,7 +23,7 @@ then
 fi
 
 ############################################
-# check if the gsb-distro branch exists
+# check if the gsb-distro tag exists
 # if not exit with an error
 
 cd ${workspace_dir}/gsb-distro
@@ -37,7 +37,7 @@ else
 fi
 
 ############################################
-# check if the gsbpublic branch exists
+# check if the gsbpublic server exists
 # if not exit with an error
 
 cd ${workspace_dir}/gsbpublic
@@ -188,7 +188,7 @@ cd ${workspace_dir}/gsbpublic
 
 git add .
 git add -f docroot/sites/default/settings.php
-git commit -am "build from cloudbees - project: gsbpublic  branch: $branch server: $server rebuild: $rebuild"
+git commit -am "build from cloudbees - project: gsbpublic  tag: $tag server: $server rebuild: $rebuild"
 git push origin $server
 
 echo "end - gsbpublic add/commit/push"
