@@ -28,7 +28,7 @@ fi
 
 cd ${workspace_dir}/gsb-distro
 
-ret_code=$(git ls-remote $distro_url $tag | wc -l | tr -d ' ')
+ret_code=$(git ls-remote --tags $distro_url $tag | wc -l | tr -d ' ')
 if [[ $ret_code != 1 ]]; then
     echo "gsb-distro tag = $tag not found"
     exit -1
@@ -57,9 +57,9 @@ fi
 cd $workspace_dir
 
 if [ ! -d gsb-distro ]; then
-    git clone -b $tag $distro_url
+    git clone -b master $distro_url
     if [ ! -d gsb-distro ]; then
-       echo "gsb-distro cloned failed for tag = $tag"
+       echo "gsb-distro cloned failed for branch = master"
        exit -1
     fi
     echo "gsb-distro directory created"
