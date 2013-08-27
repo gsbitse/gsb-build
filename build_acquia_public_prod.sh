@@ -203,11 +203,10 @@ echo "begin - gsbpublic add/commit/push"
 
 cd ${workspace_dir}/gsbpublic
 
-# commented out for testing
-# git add .
-# git add -f docroot/sites/default/settings.php
-# git commit -am "build from cloudbees - project: gsbpublic  tag: $tag server: $server"
-# git push origin $server
+git add .
+git add -f docroot/sites/default/settings.php
+git commit -am "build from cloudbees - project: gsbpublic  tag: $tag server: $server"
+git push origin $server
 
 echo "end - gsbpublic add/commit/push"
 
@@ -216,8 +215,7 @@ echo "end - gsbpublic add/commit/push"
 # $rebuild is set to true
 #
 
-# commented out for testing
-# ssh ${publicsite_ssh} "sh build/bin/acquia-build/build_prod.sh $server"
+ssh ${publicsite_ssh} "sh build/bin/acquia-build/build_prod.sh $server"
 
 ############################################
 # end of build script 
