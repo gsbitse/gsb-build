@@ -6,6 +6,12 @@
 distro_url="https://github.com/gsbitse/gsb-distro.git"
 publicsite_url="gsbpublic@svn-3224.prod.hosting.acquia.com:gsbpublic.git"
 
+publicsite_dev_ssh="gsbpublic@staging-1530.prod.hosting.acquia.com"
+publicsite_dev2_ssh="gsbpublic@staging-1530.prod.hosting.acquia.com"
+publicsite_stage_ssh="gsbpublic@ded-2036.prod.hosting.acquia.com"
+publicsite_stage2_ssh="gsbpublic@ded-2036.prod.hosting.acquia.com"
+publicsite_sandbox_ssh="gsbpublic@staging-1530.prod.hosting.acquia.com"
+publicsite_loadtest_ssh="gsbpublic@ded-1505.prod.hosting.acquia.com"
 publicsite_prod_ssh="gsbpublic@ded-1528.prod.hosting.acquia.com"
 
 #change this to prod... after testing
