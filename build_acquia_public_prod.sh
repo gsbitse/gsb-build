@@ -204,7 +204,6 @@ echo "begin - gsbpublic add/commit/push"
 cd ${workspace_dir}/gsbpublic
 
 echo "build from cloudbees - project: gsbpublic  tag: $tag server: $server"
-exit -1;
 
 git add .
 git add -f docroot/sites/default/settings.php
