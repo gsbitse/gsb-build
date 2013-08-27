@@ -8,7 +8,8 @@ publicsite_url="gsbpublic@svn-3224.prod.hosting.acquia.com:gsbpublic.git"
 
 publicsite_prod_ssh="gsbpublic@ded-1528.prod.hosting.acquia.com"
 
-server="prod"
+#change this to prod... after testing
+server="dev2"
 
 ############################################
 # save the workspace root directory
@@ -18,6 +19,36 @@ workspace_dir=$PWD
 ############################################
 # set the public site ssh we will be using
 # based on which server we are building on
+
+if test $server = "dev"
+then
+  publicsite_ssh=$publicsite_dev_ssh
+fi
+
+if test $server = "dev2"
+then
+  publicsite_ssh=$publicsite_dev2_ssh
+fi
+
+if test $server = "stage"
+then
+  publicsite_ssh=$publicsite_stage_ssh
+fi
+
+if test $server = "stage2"
+then
+  publicsite_ssh=$publicsite_stage2_ssh
+fi
+
+if test $server = "sandbox"
+then
+  publicsite_ssh=$publicsite_sandbox_ssh
+fi
+
+if test $server = "loadtest"
+then
+  publicsite_ssh=$publicsite_loadtest_ssh
+fi
 
 if test $server = "prod"
 then
