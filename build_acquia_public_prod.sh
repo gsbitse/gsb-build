@@ -216,6 +216,9 @@ git add -f docroot/sites/default/settings.php
 git commit -am "build from cloudbees - project: gsbpublic  tag: $tag server: $server"
 git push origin $server
 
+git tag $tag
+git push origin --tags
+
 echo "end - gsbpublic add/commit/push"
 
 ############################################
