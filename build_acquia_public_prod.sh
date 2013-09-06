@@ -15,7 +15,7 @@ publicsite_loadtest_ssh="gsbpublic@ded-1505.prod.hosting.acquia.com"
 publicsite_prod_ssh="gsbpublic@ded-1528.prod.hosting.acquia.com"
 
 #change this to prod... after testing
-server="dev2"
+server="prod"
 
 ############################################
 # save the workspace root directory
