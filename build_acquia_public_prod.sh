@@ -226,7 +226,10 @@ echo "end - gsbpublic add/commit/push"
 # $rebuild is set to true
 #
 
-ssh ${publicsite_ssh} "sh build/bin/acquia-build/build_prod.sh $server"
+# Note: Moved this to a separate .sh called:
+#   build_acquia_public_prod_post.sh
+
+#ssh ${publicsite_ssh} "sh build/bin/acquia-build/build_prod.sh $server"
 
 ############################################
 # end of build script 
