@@ -185,6 +185,17 @@ ln -s default gsb
 echo "end - gsb symlink"
 
 ############################################
+# create a favicon.ico -> profiles/gsb_public/themes/gsb_theme/favicon.ico 
+# symlink to fix 404 errors.
+
+echo "begin - favicon symlink"
+
+cd ${workspace_dir}/gsbpublic/docroot
+ln -s profiles/gsb_public/themes/gsb_theme/favicon.ico favicon.ico
+
+echo "end - favicon symlink"
+
+############################################
 # remove all the previous files that are
 # no longer needed 
 # (the files not recreated by the make)
