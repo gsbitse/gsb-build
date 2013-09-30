@@ -1,1 +1,1 @@
-branches=WP-2040,WP-2045,WPBQA-211,master,no_panopoly,release-1.0,release-1.1,release-1.2,release-1.3,release-1.4,release-2.0
+branches=WP-2040,WP-2045,WP-2052,WP-2064,WPBQA-211,install-speedup,master,no_panopoly,release-1.0,release-1.1,release-1.2,release-1.3,release-1.4,release-2.0
