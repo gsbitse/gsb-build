@@ -23,6 +23,14 @@ server="prod"
 workspace_dir=$PWD
 
 ############################################
+# cleanup the ssh known_hosts
+
+rm ~/.ssh/known_hosts
+touch ~/.ssh/known_hosts
+chmod 600 ~/.ssh/known_hosts
+chmod 700 ~/.ssh
+
+############################################
 # set the public site ssh we will be using
 # based on which server we are building on
 
