@@ -34,6 +34,8 @@ fi
 # check if the gsbpublic branch exists
 # if not exit with an error
 
+echo "at 0"
+
 cd ${workspace_dir}/gsbpublic
 
 ret_code=$(git ls-remote $publicsite_url $server | wc -l | tr -d ' ')
@@ -47,6 +49,8 @@ fi
 ############################################
 # check if the gsb-distro directory exists
 # if it doesn't clone it
+
+echo "at 1"
 
 cd $workspace_dir
 
@@ -65,12 +69,16 @@ fi
 # checkout the gsb-distro branch
 # 
 
+echo "at 2"
+
 cd ${workspace_dir}/gsb-distro
 git checkout $branch
 
 ############################################
 # check if the gsbpublic directory exists
 # if it doesn't clone it
+
+echo "at 3"
 
 cd $workspace_dir
 
