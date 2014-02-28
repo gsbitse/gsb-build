@@ -5,7 +5,7 @@
 
 distro_url="https://github.com/gsbitse/gsb-distro.git"
 
-publicsite_prod_ssh="gsbpublic@ded-1528.prod.hosting.acquia.com"
+publicsite_stage_ssh="gsbpublic@ded-2036.prod.hosting.acquia.com"
 publicsite_ssh=$publicsite_stage_ssh
 publicsite_url="gsbpublic@svn-3224.prod.hosting.acquia.com:gsbpublic.git"
 
