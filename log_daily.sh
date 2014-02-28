@@ -4,7 +4,12 @@
 # initialize the distro and gsbpublic urls
 
 distro_url="https://github.com/gsbitse/gsb-distro.git"
+
+publicsite_prod_ssh="gsbpublic@ded-1528.prod.hosting.acquia.com"
+publicsite_ssh=$publicsite_stage_ssh
 publicsite_url="gsbpublic@svn-3224.prod.hosting.acquia.com:gsbpublic.git"
+
+server="stage"
 
 ############################################
 # save the workspace root directory
@@ -81,13 +86,22 @@ else
 fi
 
 ############################################
+# checkout the gsbpublic branch
+# 
+
+cd ${workspace_dir}/gsbpublic
+git checkout $server
+
+############################################
 # change to the gsbpublic directory
 # remove the previous files from the docroot
 # and then run the drush make
 
+cd ${workspace_dir}/gsbpublic
+rm -rf docroot
+
 echo "start drush make"
 
-# php /private/stanfordgsb/drush/drush.php vset date_default_timezone 'America/Los_Angeles' -y
 php /private/stanfordgsb/drush/drush.php make ../gsb-distro/gsb-public-distro.make docroot
 
 echo "end drush make"
