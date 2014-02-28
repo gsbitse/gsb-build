@@ -20,6 +20,8 @@ workspace_dir=$PWD
 # check if the gsb-distro branch exists
 # if not exit with an error
 
+echo "at 00"
+
 cd ${workspace_dir}/gsb-distro
 
 ret_code=$(git ls-remote $distro_url $branch | wc -l | tr -d ' ')
