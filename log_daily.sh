@@ -3,6 +3,8 @@
 ############################################
 # initialize the distro and gsbpublic urls
 
+echo "at start of log_daily !!!!!!"
+
 distro_url="https://github.com/gsbitse/gsb-distro.git"
 
 publicsite_stage_ssh="gsbpublic@ded-2036.prod.hosting.acquia.com"
