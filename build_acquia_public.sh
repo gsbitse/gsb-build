@@ -182,7 +182,12 @@ fi
 
 echo "begin - settings copy"
 
-cp /private/stanfordgsb/settings_gsbpublic.php ${workspace_dir}/gsbpublic/docroot/sites/default/settings.php
+cp /private/stanfordgsb/settings_gsbpublic_qa.php ${workspace_dir}/gsbpublic/docroot/sites/default/settings.php
+
+if test $server = "prod"
+then
+  cp /private/stanfordgsb/settings_gsbpublic.php ${workspace_dir}/gsbpublic/docroot/sites/default/settings.php
+fi
 
 echo "end - settings copy"
 
