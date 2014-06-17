@@ -162,18 +162,6 @@ php /private/stanfordgsb/drush/drush.php make ../gsb-distro/gsb-public-distro.ma
 echo "end drush make"
 
 ############################################
-# run the logs
-
-cd ${workspace_dir}
-
-rm -rf gsb_public_logs
-
-git clone git@github.com:gsbitse/gsb_public_logs.git
-
-cd ${workspace_dir}/gsbpublic
-sh ../gsb_public_logs/logs.sh > log_out.txt
-
-############################################
 # add back in the symlink for the files
 # directory
 
