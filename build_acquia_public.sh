@@ -97,17 +97,7 @@ fi
 
 cd ${workspace_dir}/gsbpublic
 git checkout $server
-
-############################################
-# copy the settings.php file off to 
-# a temp directory
-
-# mkdir ${workspace_dir}/temp
-
-cd ${workspace_dir}/gsbpublic
 git pull
-
-# cp docroot/sites/default/settings.php ${workspace_dir}/temp/.
 
 ############################################
 # change to the gsbpublic directory
@@ -133,12 +123,6 @@ if [ ! -d docroot ]; then
     echo "The make failed"
     exit -1
 fi
-
-############################################
-# add back in the symlink for the files
-# directory
-
-#ln -s /mnt/files/gsbpublic/sites/default/files docroot/sites/default/files 
 
 ############################################
 # copy the settings.php file back to 
@@ -193,17 +177,12 @@ cd ${workspace_dir}/gsbpublic
 
 git add .
 git add -f docroot/sites/default/settings.php
-git commit -am "build from cloudbees - project: gsbpublic  branch: $branch server: $server rebuild: $rebuild"
+git commit -am "build from cloudbees - project: gsbpublic  branch: $branch server: $server"
 git push origin $server
 
 echo "end - gsbpublic add/commit/push"
 
-############################################
-# run drush si on acquia site if 
-# $rebuild is set to true
-#
-
-ssh ${publicsite_ssh} "sh build/bin/acquia-build/build.sh $server $rebuild"
+ssh ${publicsite_ssh} "sh build/bin/acquia-build/build.sh $server"
 
 ############################################
 # end of build script 
