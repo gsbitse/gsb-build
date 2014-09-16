@@ -11,6 +11,7 @@ foreach ($output as $branch) {
 
 usort($versions, 'version_compare');
 $versions = array_slice($versions, -5);
+$versions = array_reverse($versions);
 foreach ($versions as $index => $version) {
   $versions[$index] = 'release-' . $version;
 }
