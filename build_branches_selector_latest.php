@@ -1,5 +1,5 @@
 <?php
-exec('git ls-remote -h https://github.com/gsbitse/gsb-distro.git', $output);
+exec('git ls-remote -h https://github.com/gsb-public/gsb-public-distro.git', $output);
 
 $versions = array();
 foreach ($output as $branch) {
