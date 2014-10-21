@@ -3,7 +3,7 @@
 ############################################
 # initialize the distro and gsbpublic urls
 
-distro_url="https://github.com/gsbitse/gsb-distro.git"
+distro_url="https://github.com/gsb-public/gsb-public-distro.git"
 publicsite_url="gsbpublic@svn-3224.prod.hosting.acquia.com:gsbpublic.git"
 
 publicsite_dev_ssh="gsbpublic@staging-1530.prod.hosting.acquia.com"
@@ -73,11 +73,11 @@ fi
 # check if the gsb-distro tag exists
 # if not exit with an error
 
-cd ${workspace_dir}/gsb-distro
+cd ${workspace_dir}/gsb-public-distro
 
 ret_code=$(git ls-remote --tags $distro_url $tag | wc -l | tr -d ' ')
 if [[ $ret_code != 1 ]]; then
-    echo "gsb-distro tag = $tag not found"
+    echo "gsb-public-distro tag = $tag not found"
     exit -1
 else
     git pull 
@@ -103,22 +103,22 @@ fi
 
 cd $workspace_dir
 
-if [ ! -d gsb-distro ]; then
+if [ ! -d gsb-public-distro ]; then
     git clone -b master $distro_url
-    if [ ! -d gsb-distro ]; then
-       echo "gsb-distro cloned failed for branch = master"
+    if [ ! -d gsb-public-distro ]; then
+       echo "gsb-public-distro cloned failed for branch = master"
        exit -1
     fi
-    echo "gsb-distro directory created"
+    echo "gsb-public-distro directory created"
 else 
-    echo "gsb-distro directory exists"
+    echo "gsb-public-distro directory exists"
 fi
 
 ############################################
 # checkout the gsb-distro tag
 # 
 
-cd ${workspace_dir}/gsb-distro
+cd ${workspace_dir}/gsb-public-distro
 git checkout $tag
 
 ############################################
@@ -158,7 +158,7 @@ rm -rf docroot
 echo "start drush make"
 
 # php /private/stanfordgsb/drush/drush.php vset date_default_timezone 'America/Los_Angeles' -y
-php /private/stanfordgsb/drush/drush.php make ../gsb-distro/gsb-public-distro.make docroot
+php /private/stanfordgsb/drush/drush.php make ../gsb-public-distro/gsb-public-distro.make docroot
 
 echo "end drush make"
 
