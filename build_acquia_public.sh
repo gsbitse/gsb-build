@@ -1,12 +1,15 @@
 #!/bin/sh
 
 ############################################
-# initialize the distro and gsbpublic urls
+# initialize the distro and acquia urls
 
-distro_url="https://github.com/gsbitse/gsb-distro.git"
-publicsite_url="gsbpublic@svn-3224.prod.hosting.acquia.com:gsbpublic.git"
-publicsite_ssh="gsbpublic@staging-9591.prod.hosting.acquia.com"
-publicsite_prod_ssh="gsbpublic@ded-1528.prod.hosting.acquia.com"
+project_name=gsb-public
+distro_name=$project_name-distro
+acquia_name=gsbpublic
+distro_url=https://github.com/$project_name/$distro_name.git
+publicsite_url=$acquia_name@svn-3224.prod.hosting.acquia.com:$acquia_name.git
+publicsite_ssh=$acquia_name@staging-9591.prod.hosting.acquia.com
+publicsite_prod_ssh=$acquia_name@ded-1528.prod.hosting.acquia.com
 
 ############################################
 # save the workspace root directory
@@ -23,28 +26,28 @@ then
 fi
 
 ############################################
-# check if the gsb-distro branch exists
+# check if the distro branch exists
 # if not exit with an error
 
-cd ${workspace_dir}/gsb-distro
+cd ${workspace_dir}/$distro_name
 
 ret_code=$(git ls-remote $distro_url $branch | wc -l | tr -d ' ')
 if [[ $ret_code != 1 ]]; then
-    echo "gsb-distro branch = $branch not found"
+    echo "$distro_name branch = $branch not found"
     exit -1
 else
     git pull 
 fi
 
 ############################################
-# check if the gsbpublic branch exists
+# check if the acquia branch exists
 # if not exit with an error
 
-cd ${workspace_dir}/gsbpublic
+cd ${workspace_dir}/$acquia_name
 
 ret_code=$(git ls-remote $publicsite_url $server | wc -l | tr -d ' ')
 if [[ $ret_code != 1 ]]; then
-    echo "gsbpublic branch = $server not found"
+    echo "$acquia_name branch = $server not found"
     exit -1
 else
     git pull 
@@ -56,62 +59,61 @@ fi
 
 cd $workspace_dir
 
-if [ ! -d gsb-distro ]; then
+if [ ! -d $distro_name ]; then
     git clone -b $branch $distro_url
-    if [ ! -d gsb-distro ]; then
-       echo "gsb-distro cloned failed for branch = $branch"
+    if [ ! -d $distro_name ]; then
+       echo "$distro_name cloned failed for branch = $branch"
        exit -1
     fi
-    echo "gsb-distro directory created"
+    echo "$distro_name directory created"
 else 
-    echo "gsb-distro directory exists"
+    echo "$distro_name directory exists"
 fi
 
 ############################################
 # checkout the gsb-distro branch
 # 
 
-cd ${workspace_dir}/gsb-distro
+cd ${workspace_dir}/$distro_name
 git checkout $branch
 
 ############################################
-# check if the gsbpublic directory exists
+# check if the acquia directory exists
 # if it doesn't clone it
 
 cd $workspace_dir
 
-if [ ! -d gsbpublic ]; then
+if [ ! -d $acquia_name ]; then
     git clone -b $server $publicsite_url 
-    if [ ! -d gsbpublic ]; then
-       echo "gsbpublic cloned failed for branch = $server"
+    if [ ! -d $acquia_name ]; then
+       echo "$acquia_name cloned failed for branch = $server"
        exit -1
     fi    
-    echo "gsbpublic directory created"
+    echo "$acquia_name directory created"
 else
-    echo "gsbpublic directory exists"
+    echo "$acquia_name directory exists"
 fi
 
 ############################################
-# checkout the gsbpublic branch
+# checkout the acquia branch
 # 
 
-cd ${workspace_dir}/gsbpublic
+cd ${workspace_dir}/$acquia_name
 git checkout $server
 git pull
 
 ############################################
-# change to the gsbpublic directory
+# change to the acquia directory
 # remove the previous files from the docroot
 # and then run the drush make
 
-cd ${workspace_dir}/gsbpublic
+cd ${workspace_dir}/$acquia_name
 
 rm -rf docroot
 
 echo "start drush make"
 
-# php /private/stanfordgsb/drush/drush.php vset date_default_timezone 'America/Los_Angeles' -y
-php /private/stanfordgsb/drush/drush.php make ../gsb-distro/gsb-public-distro.make docroot
+php /private/stanfordgsb/drush/drush.php make ../$distro_name/$distro_name.make docroot
 
 echo "end drush make"
 
@@ -126,15 +128,15 @@ fi
 
 ############################################
 # copy the settings.php file back to 
-# the gsbpublic directory 
+# the acquia directory 
 
 echo "begin - settings copy"
 
-cp /private/stanfordgsb/settings_gsbpublic_qa.php ${workspace_dir}/gsbpublic/docroot/sites/default/settings.php
+cp /private/stanfordgsb/settings_$acquia_name_qa.php ${workspace_dir}/$acquia_name/docroot/sites/default/settings.php
 
 if test $server = "prod"
 then
-  cp /private/stanfordgsb/settings_gsbpublic.php ${workspace_dir}/gsbpublic/docroot/sites/default/settings.php
+  cp /private/stanfordgsb/settings_$acquia_name.php ${workspace_dir}/$acquia_name/docroot/sites/default/settings.php
 fi
 
 echo "end - settings copy"
@@ -145,7 +147,7 @@ echo "end - settings copy"
 
 echo "begin - gsb symlink"
 
-cd ${workspace_dir}/gsbpublic/docroot/sites
+cd ${workspace_dir}/$acquia_name/docroot/sites
 ln -s default gsb
 
 echo "end - gsb symlink"
@@ -162,7 +164,7 @@ git rm $(git ls-files --deleted)
 
 echo "begin - updating symlink for simplesaml"
 
-cd ${workspace_dir}/gsbpublic/docroot
+cd ${workspace_dir}/$acquia_name/docroot
 
 ln -s ../library/simplesamlphp/www simplesaml
 
@@ -171,23 +173,19 @@ echo "end - updating symlink for simplesaml"
 ############################################
 # add the changes up to acquia
 
-echo "begin - gsbpublic add/commit/push"
+echo "begin - $acquia_name add/commit/push"
 
-cd ${workspace_dir}/gsbpublic
+cd ${workspace_dir}/$acquia_name
 
 git add .
 git add -f docroot/sites/default/settings.php
-git commit -am "build from cloudbees - project: gsbpublic  branch: $branch server: $server"
+git commit -am "build from cloudbees - project: $acquia_name  branch: $branch server: $server"
 git push origin $server
 
-echo "end - gsbpublic add/commit/push"
+echo "end - $acquia_name add/commit/push"
 
 ssh ${publicsite_ssh} "sh build/bin/acquia-build/build.sh $server"
 
 ############################################
 # end of build script 
 #
-
-
-
-
