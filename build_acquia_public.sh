@@ -132,7 +132,7 @@ fi
 
 echo "begin - settings copy"
 
-cp /private/stanfordgsb/settings_$acquia_name_qa.php ${workspace_dir}/$acquia_name/docroot/sites/default/settings.php
+cp /private/stanfordgsb/settings_${acquia_name}_qa.php ${workspace_dir}/$acquia_name/docroot/sites/default/settings.php
 
 if test $server = "prod"
 then
