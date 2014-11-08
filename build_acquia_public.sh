@@ -14,7 +14,7 @@ publicsite_prod_ssh=$acquia_name@ded-1528.prod.hosting.acquia.com
 ############################################
 # save the workspace root directory
 
-workspace_dir=$PWD
+workspace_dir=/scratch/jenkins/workspace/behat
 
 ############################################
 # set the public site ssh to prod if we are
