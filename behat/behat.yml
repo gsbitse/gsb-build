@@ -1,0 +1,15 @@
+default:
+  suites:
+    default:
+      paths:
+        features: /scratch/jenkins/workspace/gsbpublic/docroot
+        bootstrap: %behat.paths.features%/bootstrap
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      base_url: http://public2-dev2.gsb.stanford.edu
