@@ -1,1 +1,1 @@
-branches=release-5.01.1,release-5.01,release-5.0.1,release-5.0,release-4.06
+branches=release-5.02,release-5.01.1,release-5.01,release-5.0.1,release-5.0
