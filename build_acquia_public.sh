@@ -180,6 +180,7 @@ cd ${workspace_dir}/$acquia_name
 git add .
 git add -f docroot/sites/default/settings.php
 git commit -am "build from cloudbees - project: $acquia_name  branch: $branch server: $server"
+ssh ${publicsite_ssh} "rm -f ~/update-finished.txt"
 git push origin $server
 
 echo "end - $acquia_name add/commit/push"
