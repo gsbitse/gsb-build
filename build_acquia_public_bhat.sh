@@ -158,7 +158,7 @@ echo "end - gsb symlink"
 echo "begin - installing bhatrunner"
 
 cd ${workspace_dir}/$acquia_name/docroot
-drush en -y drush en -y behatrunner
+# drush en -y drush en -y behatrunner
 
 echo "end - installing bhatrunner"
 
