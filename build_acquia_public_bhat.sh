@@ -153,6 +153,16 @@ ln -s default gsb
 echo "end - gsb symlink"
 
 ############################################
+# install the behatrunner module
+
+echo "begin - installing bhatrunner"
+
+cd ${workspace_dir}/$acquia_name/docroot
+# drush en -y drush en -y behatrunner
+
+echo "end - installing bhatrunner"
+
+############################################
 # remove all the previous files that are
 # no longer needed 
 # (the files not recreated by the make)
