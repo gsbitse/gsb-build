@@ -113,7 +113,9 @@ rm -rf docroot
 
 echo "start drush make"
 
-php /private/stanfordgsb/drush/drush.php make ../$distro_name/$distro_name.make docroot
+cp -r /private/stanfordgsb/drush drush
+
+php drush/drush.php make ../$distro_name/$distro_name.make docroot
 
 echo "end drush make"
 
