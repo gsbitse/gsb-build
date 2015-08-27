@@ -107,13 +107,14 @@ git pull
 # remove the previous files from the docroot
 # and then run the drush make
 
+cd ${workspace_dir}
+cp -r /private/stanfordgsb/drush drush
+
 cd ${workspace_dir}/$acquia_name
 
 rm -rf docroot
 
 echo "start drush make"
-
-cp -r /private/stanfordgsb/drush drush
 
 php drush/drush.php make ../$distro_name/$distro_name.make docroot
 
