@@ -106,6 +106,9 @@ tar -czvf $acquia_name-$branch.tar.gz $acquia_name
 
 rm -rf gsb-build-dev-make-output
 git clone git@github.com:gsbitse/gsb-build-dev-make-output.git
+cd gsb-build-dev-make-output
+
+mv ../$acquia_name-$branch.tar.gz .
 
 git add $acquia_name-$branch.tar.gz
 git commit -am "build from cloudbees - project: $acquia_name  branch: $branch"
