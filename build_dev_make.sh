@@ -71,7 +71,7 @@ rm -rf docroot
 
 echo "start drush make"
 
-php ../drush/drush.php make ../$distro_name/$distro_name.make docroot
+php ../drush/drush.php make --working-copy ../$distro_name/$distro_name.make docroot
 
 echo "end drush make"
 
