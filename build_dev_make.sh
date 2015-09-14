@@ -60,7 +60,7 @@ cd ${workspace_dir}
 cp -r /private/stanfordgsb/drush drush/.
 
 project_folder="${workspace_dir}/${acquia_name}"
-if [ ! -f $project_folder ];
+if [ ! -d $project_folder ];
 then
   mkdir $project_folder
 fi
