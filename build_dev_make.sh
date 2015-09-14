@@ -57,12 +57,12 @@ git checkout $branch
 # and then run the drush make
 
 cd ${workspace_dir}
-cp -r /private/stanfordgsb/drush drush
+cp -r /private/stanfordgsb/drush drush/.
 
 project_folder="${workspace_dir}/${acquia_name}"
 if [ ! -f $project_folder ];
 then
-    mkdir $project_folder
+  mkdir $project_folder
 fi
 
 cd $project_folder
