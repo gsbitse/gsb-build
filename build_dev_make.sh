@@ -102,7 +102,7 @@ echo "begin - $acquia_name add/commit/push"
 
 cd ${workspace_dir}
 
-tar_file=${acquia_name}-${branch}.tar.gz
+tar_file=${acquia_name}.tar.gz
 if [ -f tar_file ]; then
   rm -f $tar_file
 fi
@@ -112,9 +112,9 @@ rm -rf gsb-build-dev-make-output
 git clone git@github.com:gsbitse/gsb-build-dev-make-output.git
 cd gsb-build-dev-make-output
 
-mv ../$acquia_name-$branch.tar.gz .
+mv ../${tar_file} .
 
-git add $acquia_name-$branch.tar.gz
+git add ${tar_file}
 git commit -am "build from cloudbees - project: $acquia_name  branch: $branch"
 git push origin master
 
