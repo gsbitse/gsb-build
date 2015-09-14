@@ -57,7 +57,7 @@ git checkout $branch
 # and then run the drush make
 
 cd ${workspace_dir}
-cp -r /private/stanfordgsb/drush drush/.
+cp -r /private/stanfordgsb/drush drush
 
 project_folder="${workspace_dir}/${acquia_name}"
 if [ ! -d $project_folder ];
@@ -71,7 +71,7 @@ rm -rf docroot
 
 echo "start drush make"
 
-php drush/drush.php make ../$distro_name/$distro_name.make docroot
+php ../drush/drush.php make ../$distro_name/$distro_name.make docroot
 
 echo "end drush make"
 
