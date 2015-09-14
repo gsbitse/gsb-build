@@ -80,8 +80,8 @@ echo "end drush make"
 # continuing.
 
 if [ ! -d docroot ]; then
-    echo "The make failed"
-    exit -1
+  echo "The make failed"
+  exit -1
 fi
 
 ############################################
@@ -102,7 +102,11 @@ echo "begin - $acquia_name add/commit/push"
 
 cd ${workspace_dir}
 
-tar -czvf $acquia_name-$branch.tar.gz $acquia_name
+tar_file=${acquia_name}-${branch}.tar.gz
+if [ -f tar_file ]; then
+  rm -f $tar_file
+fi
+tar -czvf $tar_file $acquia_name
 
 rm -rf gsb-build-dev-make-output
 git clone git@github.com:gsbitse/gsb-build-dev-make-output.git
