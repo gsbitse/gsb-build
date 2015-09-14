@@ -59,7 +59,13 @@ git checkout $branch
 cd ${workspace_dir}
 cp -r /private/stanfordgsb/drush drush
 
-cd ${workspace_dir}/$acquia_name
+project_folder="${workspace_dir}/${acquia_name}"
+if [ ! -f $project_folder ];
+then
+    mkdir $project_folder
+fi
+
+cd $project_folder
 
 rm -rf docroot
 
