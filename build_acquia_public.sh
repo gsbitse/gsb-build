@@ -108,6 +108,8 @@ git pull
 # and then run the drush make
 
 cd ${workspace_dir}
+echo "copying drush from private"
+echo "workspace_dir is: ${workspace_dir}"
 cp -r /private/stanfordgsb/drush ${workspace_dir}/drush
 
 cd ${workspace_dir}/$acquia_name
