@@ -96,7 +96,7 @@ ln -s default gsb
 echo "end - gsb symlink"
 
 ############################################
-# add the changes up to gsb-build-bowline-project
+# add the changes up to gsb-build-dev-make-output
 
 echo "begin - $acquia_name add/commit/push"
 
@@ -108,9 +108,9 @@ if [ -f tar_file ]; then
 fi
 tar -czvf $tar_file $acquia_name
 
-rm -rf gsb-build-bowline-project
-git clone git@github.com:gsbitse/gsb-build-bowline-project.git
-cd gsb-build-bowline-project
+rm -rf gsb-build-dev-make-output
+git clone git@github.com:gsbitse/gsb-build-dev-make-output.git
+cd gsb-build-dev-make-output
 
 mv ../${tar_file} .
 
