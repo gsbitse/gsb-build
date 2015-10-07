@@ -7,9 +7,13 @@ project_name=gsb-public
 distro_name=$project_name-distro
 acquia_name=gsbpublic
 distro_url=https://github.com/$project_name/$distro_name.git
+
+newname=test
+env=${server/stage/$newname}
+
 publicsite_url=$acquia_name@svn-3224.prod.hosting.acquia.com:$acquia_name.git
-publicsite_ssh=$acquia_name@staging-9591.prod.hosting.acquia.com
-publicsite_prod_ssh=$acquia_name@ded-1528.prod.hosting.acquia.com
+publicsite_ssh=$acquia_name.$env@staging-9591.prod.hosting.acquia.com
+publicsite_prod_ssh=$acquia_name.$env@ded-1528.prod.hosting.acquia.com
 
 ############################################
 # save the workspace root directory
