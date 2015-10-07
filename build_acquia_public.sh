@@ -8,7 +8,7 @@ distro_name=$project_name-distro
 acquia_name=gsbpublic
 distro_url=https://github.com/$project_name/$distro_name.git
 
-newname=test
+newname="test"
 env=${server/stage/$newname}
 
 publicsite_url=$acquia_name@svn-3224.prod.hosting.acquia.com:$acquia_name.git
