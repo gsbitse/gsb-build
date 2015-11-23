@@ -114,9 +114,12 @@ cd gsb-build-dev-make-output
 
 mv ../${tar_file} .
 
+rm -rf .git
+git init
 git add ${tar_file}
 git commit -am "build from cloudbees - project: $acquia_name  branch: $branch"
-git push origin master
+git remote add origin git@github.com:gsbitse/gsb-build-dev-make-output.git
+git push -u --force origin master
 
 echo "end - $acquia_name add/commit/push"
 
