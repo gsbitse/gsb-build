@@ -114,6 +114,7 @@ git pull
 cd ${workspace_dir}
 echo "copying drush from private"
 echo "workspace_dir is: ${workspace_dir}"
+git config --global apply.whitespace fix
 cp -r /private/stanfordgsb/drush ${workspace_dir}/drush
 
 cd ${workspace_dir}/$acquia_name
