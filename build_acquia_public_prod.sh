@@ -147,6 +147,11 @@ git checkout $server
 git pull
 
 ############################################
+# Apply whitespace fix for patches.
+#
+git config --global apply.whitespace fix
+
+############################################
 # change to the gsbpublic directory
 # remove the previous files from the docroot
 # and then run the drush make
