@@ -158,7 +158,7 @@ rm -rf docroot
 echo "start drush make"
 
 # php /private/stanfordgsb/drush/drush.php vset date_default_timezone 'America/Los_Angeles' -y
-php /private/stanfordgsb/drush/drush.php make ../gsb-public-distro/gsb-public-distro.make docroot
+php /private/stanfordgsb/drush/drush.php -v make ../gsb-public-distro/gsb-public-distro.make docroot
 
 echo "end drush make"
 
