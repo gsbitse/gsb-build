@@ -52,6 +52,12 @@ cd ${workspace_dir}/$distro_name
 git checkout $branch
 
 ############################################
+# Apply whitespace fix for patches.
+#
+
+git config --global apply.whitespace fix
+
+############################################
 # change to the acquia directory
 # remove the previous files from the docroot
 # and then run the drush make
