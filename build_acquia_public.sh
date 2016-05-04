@@ -189,6 +189,18 @@ ln -s ../library/simplesamlphp/www simplesaml
 echo "end - updating symlink for simplesaml"
 
 ############################################
+# run the composer steps 
+
+echo "begin - composer steps"
+
+cd ${workspace_dir}/$acquia_name/docroot/sites
+php ${workspace_dir}/drush/drush.php composer-json-rebuild
+cd default/files/composer
+php ${workspace_dir}/composer/composer.phar install
+
+echo "end - composer steps"
+
+############################################
 # add the changes up to acquia
 
 echo "begin - $acquia_name add/commit/push"
