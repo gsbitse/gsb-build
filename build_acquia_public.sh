@@ -114,9 +114,6 @@ echo "copying composer from private"
 echo "workspace_dir is: ${workspace_dir}"
 cp -r /private/stanfordgsb/composer ${workspace_dir}/composer
 
-cd ${workspace_dir}/$acquia_name
-mkdir docroot/sites/all/vendor
-
 ############################################
 # change to the acquia directory
 # remove the previous files from the docroot
@@ -146,6 +143,12 @@ if [ ! -d docroot ]; then
     echo "The make failed"
     exit -1
 fi
+
+############################################
+# make the composer vendor directory
+
+cd ${workspace_dir}/$acquia_name
+mkdir docroot/sites/all/vendor
 
 ############################################
 # copy the settings.php file back to 
