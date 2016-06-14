@@ -123,7 +123,7 @@ rm -rf docroot
 
 echo "start drush make"
 
-php ${workspace_dir}/drush/drush.php --verbose make ../$distro_name/$distro_name.make docroot
+php ${workspace_dir}/drush/drush.php make ../$distro_name/$distro_name.make docroot
 
 echo "end drush make"
 
