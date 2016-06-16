@@ -152,6 +152,15 @@ fi
 echo "end - settings copy"
 
 ############################################
+# create a symlink for the wkhtmltopdf print
+
+echo "begin - wkhtmltopdf symlink"
+
+ln -s /mnt/gfs/home/gsbpublic/bin/wkhtmltopdf ${workspace_dir}/$acquia_name/docroot/profiles/gsb_public/modules/contrib/print/lib/wkhtmltopdf
+
+echo "end - wkhtmltopdf symlink"
+
+############################################
 # create a gsb -> default symlink to 
 # create a separate path for files
 
