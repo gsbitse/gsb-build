@@ -157,7 +157,7 @@ echo "end - settings copy"
 
 echo "begin - google verify copy"
 
-cp /private/stanfordgsb/googlec7aa5bf60b3a4cc6.html ${workspace_dir}/$acquia_name/docroot/sites/default/googlec7aa5bf60b3a4cc6.html
+cp /private/stanfordgsb/googlec7aa5bf60b3a4cc6.html ${workspace_dir}/$acquia_name/docroot/googlec7aa5bf60b3a4cc6.html
 
 echo "end - google verify copy"
 
