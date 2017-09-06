@@ -187,6 +187,16 @@ cp /private/stanfordgsb/settings_gsbpublic.php ${workspace_dir}/gsbpublic/docroo
 echo "end - settings copy"
 
 ############################################
+# copy the google verify file back to 
+# the acquia directory 
+
+echo "begin - google verify copy"
+
+cp /private/stanfordgsb/googlec7aa5bf60b3a4cc6.html ${workspace_dir}/gsbpublic/docroot/googlec7aa5bf60b3a4cc6.html
+
+echo "end - google verify copy"
+
+############################################
 # create a gsb -> default symlink to 
 # create a separate path for files
 
