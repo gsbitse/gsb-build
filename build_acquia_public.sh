@@ -205,11 +205,9 @@ echo "end - updating symlink for simplesaml"
 echo "begin - $acquia_name add/commit/push"
 
 cd ${workspace_dir}/$acquia_name
-ls -R docroot/profiles/gsb_public/modules/contrib/menu_trail_by_path/
 
 git add .
 git add -f docroot/sites/default/settings.php
-git status
 git commit -am "build from cloudbees - project: $acquia_name  branch: $branch server: $server"
 ssh ${publicsite_ssh} "rm -f ~/update-finished.txt"
 git push origin $server
