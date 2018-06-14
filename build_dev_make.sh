@@ -112,7 +112,7 @@ tar_file=${acquia_name}.tar.gz
 if [ -f tar_file ]; then
   rm -f $tar_file
 fi
-tar --exclude='docroot/profiles/gsb_public/themes/gsb_theme/.git' -czvf $tar_file $acquia_name
+tar --exclude='docroot/profiles/gsb_public/themes/gsb_theme/.git' --exclude='docroot/profiles/gsb_public/modules/custom/md_megamenu' -czvf $tar_file $acquia_name
 
 rm -rf gsb-build-dev-make-output
 git clone git@github.com:gsbitse/gsb-build-dev-make-output.git
