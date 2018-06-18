@@ -127,6 +127,13 @@ git commit -am "build from cloudbees - project: $acquia_name  branch: $branch"
 git remote add origin git@github.com:gsbitse/gsb-build-dev-make-output.git
 git push -u --force origin master
 
+rm -rf .git
+git init
+git add ${tar_file}
+git commit -am "build from cloudbees - project: $acquia_name  branch: $branch"
+git remote add origin git@bitbucket.org:gsbgmercer/gsb-build-dev-make-output.git
+git push -u --force origin master
+
 echo "end - $acquia_name add/commit/push"
 
 ############################################
