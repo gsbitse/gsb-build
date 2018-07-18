@@ -115,17 +115,24 @@ fi
 tar --exclude='docroot/profiles/gsb_public/themes/gsb_theme/.git' -czvf $tar_file $acquia_name
 
 rm -rf gsb-build-dev-make-output
-git clone git@github.com:gsbitse/gsb-build-dev-make-output.git
+git clone git@bitbucket.org:stanfordgsb/gsb-build-dev-make-output.git
 cd gsb-build-dev-make-output
 
 mv ../${tar_file} .
 
-rm -rf .git
-git init
+# delete previous build branch
+git push --delete origin build
+git branch -D build
+
+# create a new build branch
+git checkout -b build
+git push -u origin build
+
+# add and push changes to build branch
 git add ${tar_file}
 git commit -am "build from cloudbees - project: $acquia_name  branch: $branch"
 git remote add origin git@bitbucket.org:stanfordgsb/gsb-build-dev-make-output.git
-git push -u --force --verbose origin master
+git push -u --force origin build
 
 echo "end - $acquia_name add/commit/push"
 
