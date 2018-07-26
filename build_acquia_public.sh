@@ -214,6 +214,8 @@ git push origin $server
 
 echo "end - $acquia_name add/commit/push"
 
+echo "ssh'ing to here: ${publicsite_ssh}"
+
 ssh ${publicsite_ssh} "sh build/bin/acquia-build/build.sh $server"
 
 ############################################
