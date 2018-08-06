@@ -162,6 +162,16 @@ cp /private/stanfordgsb/googlec7aa5bf60b3a4cc6.html ${workspace_dir}/$acquia_nam
 echo "end - google verify copy"
 
 ############################################
+# copy the facebook verify file back to 
+# the acquia directory 
+
+echo "begin - facebook verify copy"
+
+cp /private/stanfordgsb/5mfnghpoghzw2h8972xu52kzy6n09u.html ${workspace_dir}/gsbpublic/docroot/5mfnghpoghzw2h8972xu52kzy6n09u.html
+
+echo "end - facebook verify copy"
+
+############################################
 # create a symlink for the wkhtmltopdf print
 
 echo "begin - wkhtmltopdf symlink"
