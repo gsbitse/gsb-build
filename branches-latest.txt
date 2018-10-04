@@ -1,1 +1,1 @@
-branches=release-6.58,release-6.57.17,release-6.57.16,release-6.57.14,release-6.57.12
+branches=release-6.58,release-6.57.18,release-6.57.17,release-6.57.16,release-6.57.14
